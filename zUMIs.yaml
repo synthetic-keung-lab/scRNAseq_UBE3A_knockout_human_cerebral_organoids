@@ -1,0 +1,52 @@
+project: 6Week_UBE3A
+sequence_files:
+  file1:
+    name: /Documents/6Week/2-LCC1896-LCD1244_R1.fastq.gz
+    base_definition: cDNA(1-151)
+      - #example: BC(1-6)
+      - #example: UMI(7-16)
+  file2:
+    name: /Documents/6Week/2-LCC1896-LCD1244_R2.fastq.gz
+    base_definition:
+      - UMI(1-10)
+      -BC(11-18,49-56,79-86)
+reference:
+  STAR_index: /Documents/6Week/genomes_annotation/hg38_273a
+  GTF_file: /Documents/6Week/genomes_annotation/gencode.v34.annotation.gtf
+  exon_extension: no
+  extension_length: 0
+  scaffold_length_min: 0
+  additional_files: ~
+  additional_STAR_params: '--limitSjdbInsertNsj 2000000'
+out_dir: /Documents/6Week/output
+num_threads: 20
+mem_limit: 80
+filter_cutoffs:
+  BC_filter:
+    num_bases: 1
+    phred: 10
+  UMI_filter:
+    num_bases: 1
+    phred: 10
+barcodes:
+  barcode_num: ~
+  barcode_file: ~
+  barcode_sharing: /Documents/6Week/barcodeSharing.txt
+  automatic: yes
+  BarcodeBinning: 1
+  nReadsperCell: 100
+  demultiplex: no
+counting_opts:
+  introns: yes
+  intronProb: no
+  downsampling: ~
+  strand: 0
+  Ham_Dist: 1
+  write_ham: no
+  velocyto: no
+  primaryHit: yes
+  multi_overlap: no
+  twoPass: yes
+make_stats: yes
+which_Stage: Filtering
+zUMIs_directory: /usr/local/usrapps/zUMIs
