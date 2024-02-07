@@ -582,14 +582,16 @@ UBE3A_11_Week.integrated.neuron <- SetIdent(UBE3A_11_Week.integrated.neuron, val
 ENCL.DGE <- FindMarkers(UBE3A_11_Week.integrated.neuron, assay="SCT", slot="scale.data", ident.1="EN-CL", ident.2="Non-EN-CL",recorrect_umi = FALSE)
 write.table(ENCL.DGE,paste0("UBE3A_11_Week_ECNL_Neuron_Differential_Marker_Expression.txt"),col.names=NA,row.names=TRUE,quote=FALSE,sep="\t")
 levels(UBE3A_11_Week.integrated.neuron) <- c("EN-CL","Non-EN-CL")
-ENCLNeuron.Markers= unique(c("SLC24A2","LRRC7","ANKS1B","PLXND1","LIN7A","EPHA5","SDK1","CAP2","CTTNBP2", #synapse
-                                      "EPHA5","SDK1","CAP2","CTTNBP2","NELL2","NFIB","NEO1","MYO5B","ARPP21","EPHA7","SOX5","FLRT2","SHTN1","SRGAP1", #Axon-dendrite
-                                      "SOX5","FLRT2","SHTN1","SRGAP1","AFF3","BCL11A","DAB1",#migration/cortical layering
-                                      "DAB1","LRRTM4","PDE1A","TG","GAREM1","ABHD6", #signaling
-                                      "ABHD6", "KCNQ5","GRIA3","GRIA1","CACNA1E","SLC4A10","RIMS2",#neuronal excitability/neurotransmission
-                                      "ST3GAL1","DLGAP1","NBEA","COPG2", #golgi
-                                      "CHD7","ZFHX4","PBX3",#differentiation
-                                      "PDGFC","ADAMTS3","MLLT3","FRMD4B","DACH1")) #other
+ENCLNeuron.Markers= unique(c("SLC24A2","LRRC7","ANKS1B","PLXND1","SLC4A10","LRRTM4","KCNQ5","GRIA3","GRIA1","DLGAP1","CACNA1E","ABHD6","RIMS2", #synapse-related
+                             "LIN7A","EPHA5","SDK1","CAP2","CTTNBP2","FLRT2", #synapse and axon/dendrite development
+                             "NELL2","NFIB","MYO5B","ARPP21","EPHA7", #axon/dendrite development
+                             "LIN7A","NEO1", "SHTN1","SRGAP1","SOX5","DAB1",#axon/dendrite development and cell migration/cortical layering
+                             "AFF3","BCL11A","ZBTB18",# cell migration/cortical layering
+                             #neuronal excitability/neurotransmission
+                             "ST3GAL1","NBEA","COPG2", #golgi-related
+                             "PDE1A","TG","GAREM1", #signaling-related
+                             "CHD7","ZFHX4", #cell differentiation
+                             "PDGFC","ADAMTS3","MLLT3","FRMD4B","DACH1","PBX3")) #other
 pdf("UBE3A_11_Week_ECNL_Neuron_Differential_Marker_Expression_SCT_res1.5_ENCLDGE_heatmap.pdf",width=10,height=10)
 DoHeatmap(UBE3A_11_Week.integrated.neuron, features = ENCLNeuron.Markers, group.by = "EN.CL")
 dev.off()
